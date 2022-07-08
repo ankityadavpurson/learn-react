@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0,
+    };
+  }
+
+  render() {
+    console.log("render called...");
+
+    return this.state.counter <= 5 ? (
+      <div>
+        {this.state.counter}
+        <button
+          onClick={() => {
+            this.setState({
+              counter: this.state.counter + 1,
+            });
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Increase
+        </button>
+      </div>
+    ) : (
+      <div>Done</div>
+    );
+  }
 }
 
 export default App;
